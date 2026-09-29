@@ -1,26 +1,432 @@
 @import "tailwindcss";
 
+/* Solo Queue landing — Espresso Collage tokens (source: ../docs/design.md).
+   Landing-only additions: lbtn family, tag-rust, landing scale ramp. */
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --color-chrome: #2b1a14;
+  --color-surface: #f4ebd9;
+  --color-surface-raised: #fbf5e8;
+  --color-line: #d6c4a6;
+  --color-line-soft: #e2d3b8;
+  --color-on-surface: #2b1a14;
+  --color-muted-on-surface: #6b5146;
+  --color-on-chrome-strong: #f4ebd9;
+  --color-muted-on-chrome: #bfae98;
+  --color-primary: #c8412b;
+  --color-primary-deep: #a3361f;
+  --color-on-primary: #ffffff;
+  --color-threads: #ffd54a;
+  --color-instagram: #f0775c;
+  --color-pillar-tools: #8fb3da;
+  --color-pillar-screen: #eba3d0;
+  --color-tape-yellow: #ffd86f;
+  --space-8: 8px;
+  --space-12: 12px;
+  --space-16: 16px;
+  --space-20: 20px;
+  --space-24: 24px;
+  --space-32: 32px;
+  --space-40: 40px;
+  --space-48: 48px;
+  --space-64: 64px;
+  --space-80: 80px;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  background: var(--color-surface);
+  color: var(--color-on-surface);
+  font-family: var(--font-body), "DM Sans", system-ui, sans-serif;
+  font-size: 17px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+.l-disp {
+  font-family: var(--font-display), "Bricolage Grotesque", sans-serif;
+}
+.l-mono {
+  font-family: var(--font-mono), "DM Mono", monospace;
+}
+.l-eyebrow {
+  font-family: var(--font-mono), "DM Mono", monospace;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.l-kicker {
+  font-family: var(--font-display), "Bricolage Grotesque", sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+.l-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Header */
+.l-header {
+  height: 96px;
+  box-sizing: border-box;
+  padding: 0 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.l-logo {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-family: var(--font-display), "Bricolage Grotesque", sans-serif;
+  font-size: 26px;
+  font-weight: 800;
+  letter-spacing: -0.7px;
+  text-decoration: none;
+  color: inherit;
+}
+.l-logo-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  display: inline-block;
+  margin-top: 8px;
+}
+.l-nav {
+  display: flex;
+  gap: 36px;
+}
+.l-nav a {
+  font-size: 15px;
+  color: inherit;
+  text-decoration: none;
+  padding: 10px 4px;
+}
+.l-nav a:hover,
+.l-nav a[data-active="true"] {
+  text-decoration: underline;
+  text-decoration-color: var(--color-primary);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 6px;
+}
+
+/* Buttons: 52px landing voice (mobile 44px = app button) */
+.lbtn {
+  height: 52px;
+  padding: 0 26px;
+  box-sizing: border-box;
+  border-radius: 26px;
+  font-weight: 600;
+  font-size: 16px;
+  font-family: var(--font-body), "DM Sans", sans-serif;
+  border: 1.5px solid var(--color-chrome);
+  background: transparent;
+  color: var(--color-on-surface);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  cursor: pointer;
+  white-space: nowrap;
+  text-decoration: none;
+}
+.lbtn.pri {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: #fff;
+}
+.lbtn.dark {
+  background: var(--color-chrome);
+  border-color: var(--color-chrome);
+  color: var(--color-on-chrome-strong);
+}
+.lbtn.sm {
+  height: 44px;
+  padding: 0 22px;
+  font-size: 15px;
+  border-radius: 22px;
+}
+
+/* Sections */
+.l-section {
+  box-sizing: border-box;
+  padding: 110px 80px;
+}
+.l-section-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 40px;
+}
+.l-display {
+  font-family: var(--font-display), "Bricolage Grotesque", sans-serif;
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: -0.038em;
+  margin: 0;
+}
+.l-display em {
+  font-style: normal;
+  color: var(--color-primary);
+}
+.l-lede {
+  margin: 0;
+  color: var(--color-muted-on-surface);
+  font-size: 18px;
+  line-height: 1.5;
+  max-width: 380px;
+}
+
+/* Hero */
+.l-hero-word {
+  font-size: 256px;
+  line-height: 0.9;
+  font-weight: 700;
+  letter-spacing: -14px;
+  white-space: nowrap;
+  margin: -10px 0 0 -8px;
+}
+.l-hero-dot {
+  display: inline-block;
+  width: 0.5em;
+  height: 0.5em;
+  box-sizing: border-box;
+  border: 0.1em solid var(--color-chrome);
+  border-radius: 50%;
+  background: var(--color-threads);
+  margin: 0 0.02em;
+}
+.l-shot {
+  position: relative;
+  overflow: hidden;
+  border-radius: 18px;
+  box-shadow:
+    0 18px 40px rgba(43, 26, 20, 0.28),
+    0 3px 0 rgba(43, 26, 20, 0.2);
+}
+.l-tape {
+  position: absolute;
+  width: 86px;
+  height: 24px;
+  background: rgba(255, 213, 74, 0.9);
+  z-index: 2;
+}
+.l-stat-badge {
+  position: absolute;
+  background: var(--color-chrome);
+  color: var(--color-on-chrome-strong);
+  border-radius: 16px;
+  padding: 14px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* Paper notes (shared with app voice) */
+.l-pnote {
+  position: relative;
+  padding: 18px 20px;
+  border-radius: 4px;
+  box-shadow: 0 3px 0 rgba(43, 26, 20, 0.16);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 15px;
+  line-height: 1.45;
+}
+.l-pnote .l-pnote-tape {
+  position: absolute;
+  top: -10px;
+  width: 62px;
+  height: 20px;
+  background: rgba(244, 235, 217, 0.85);
+}
+
+/* Pain band */
+.l-pain {
+  background: var(--color-chrome);
+  color: var(--color-on-chrome-strong);
+}
+.l-pain-col {
+  border-top: 2px solid;
+  padding-top: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Steps */
+.l-step-visual {
+  border-radius: 6px;
+  padding: 24px 0 0 24px;
+  height: 340px;
+  box-sizing: border-box;
+  overflow: hidden;
+  box-shadow: 0 3px 0 rgba(43, 26, 20, 0.16);
+}
+.l-step-pill {
+  align-self: flex-start;
+  font-family: var(--font-mono), "DM Mono", monospace;
+  font-size: 11px;
+  height: 26px;
+  padding: 0 12px;
+  border-radius: 13px;
+  display: inline-flex;
+  align-items: center;
+  letter-spacing: 0.08em;
+}
+
+/* FAQ */
+.l-faq {
+  border-top: 1.5px solid var(--color-chrome);
+  padding: 22px 0;
+}
+.l-faq summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-display), "Bricolage Grotesque", sans-serif;
+  font-weight: 700;
+  font-size: 22px;
+  letter-spacing: -0.023em;
+}
+.l-faq summary::-webkit-details-marker {
+  display: none;
+}
+.l-faq p {
+  margin: 14px 0 0;
+  max-width: 760px;
+  font-size: 17px;
+  line-height: 1.55;
+  color: var(--color-muted-on-surface);
+}
+
+/* Checklist */
+.l-chk {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  font-size: 16px;
+  line-height: 1.4;
+}
+.l-chk svg {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+/* Email form */
+.l-email-form {
+  display: flex;
+  gap: 10px;
+  background: var(--color-surface-raised);
+  padding: 8px;
+  border-radius: 34px;
+}
+.l-email-form input {
+  width: 360px;
+  max-width: 100%;
+  height: 52px;
+  box-sizing: border-box;
+  border: 0;
+  background: transparent;
+  padding: 0 20px;
+  font-size: 17px;
+  font-family: var(--font-body), "DM Sans", sans-serif;
+  color: var(--color-on-surface);
+  outline: none;
+}
+.l-email-form input::placeholder {
+  color: var(--color-muted-on-surface);
+}
+
+.l-pnote .l-pnote-tape {
+  position: absolute;
+  top: -10px;
+  width: 62px;
+  height: 20px;
+  background: rgba(244, 235, 217, 0.85);
+}
+
+/* Mobile menu */
+.l-menu-btn {
+  display: none;
+}
+.l-mobile-menu {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  .l-header {
+    height: 68px;
+    padding: 0 16px;
+  }
+  .l-nav {
+    display: none;
+  }
+  .l-header .lbtn.sm.desktop-only {
+    display: none;
+  }
+  .l-menu-btn {
+    display: inline-flex;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border-radius: 22px;
+  }
+  .l-mobile-menu[data-open="true"] {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 8px 16px 20px;
+  }
+  .l-mobile-menu a {
+    font-size: 18px;
+    font-weight: 600;
+    padding: 12px 4px;
+    border-top: 1px solid var(--color-line);
+    text-decoration: none;
+    color: inherit;
+  }
+  .l-section {
+    padding: 64px 16px;
+  }
+  .l-section-head {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .l-hero-word {
+    font-size: 136px;
+    letter-spacing: -8px;
+  }
+  .l-email-form {
+    flex-direction: column;
+    border-radius: 26px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .l-email-form input {
+    width: 100%;
+  }
+  .l-email-form .lbtn {
+    width: 100%;
+  }
+  .l-stack-mobile {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+  .l-grid-mobile-1 {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
 }
