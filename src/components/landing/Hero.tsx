@@ -7,6 +7,7 @@ export default function Hero() {
       style={{
         position: "relative",
         boxSizing: "border-box",
+        padding: "20px 80px 100px",
       }}
       className="l-hero-sec"
     >
@@ -130,7 +131,7 @@ export default function Hero() {
         <div
           style={{
             position: "relative",
-            marginTop: -48,
+            marginTop: -90,
             marginRight: -10,
             transform: "rotate(2deg)",
           }}

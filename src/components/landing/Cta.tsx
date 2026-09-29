@@ -8,6 +8,7 @@ export default function Cta() {
       style={{
         background: "#F0775C",
         boxSizing: "border-box",
+        padding: "110px 80px 60px",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
@@ -16,7 +17,7 @@ export default function Cta() {
         position: "relative",
         overflow: "hidden",
       }}
-      className="l-section l-cta-sec"
+      className="l-section"
     >
       <span
         aria-hidden="true"
