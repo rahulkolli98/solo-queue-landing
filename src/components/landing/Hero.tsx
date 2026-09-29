@@ -25,9 +25,6 @@ export default function Hero() {
           justifyContent: "space-between",
           alignItems: "flex-start",
           marginTop: 30,
-          maxWidth: 1440,
-          marginLeft: "auto",
-          marginRight: "auto",
         }}
       >
         <div

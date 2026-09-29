@@ -95,7 +95,7 @@ export default function How() {
               style={{
                 background: s.bg,
                 borderRadius: 6,
-                height: 340,
+                height: 220,
                 boxSizing: "border-box",
                 overflow: "hidden",
                 transform: `rotate(${s.tilt})`,
@@ -112,8 +112,9 @@ export default function How() {
                 sizes="(max-width: 900px) 100vw, 480px"
                 style={{
                   width: "100%",
-                  height: "auto",
-                  display: "block",
+                  height: "100%",
+                  objectFit: "cover",
+                  objectPosition: "top left",
                   filter: "blur(1px)",
                 }}
               />
