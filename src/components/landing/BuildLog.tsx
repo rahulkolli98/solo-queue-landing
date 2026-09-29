@@ -64,7 +64,15 @@ export default function BuildLog() {
           </svg>
         </a>
       </div>
-      <div style={{ position: "relative", height: 420 }}>
+      <div
+        style={{
+          position: "relative",
+          height: 420,
+          width: "100%",
+          maxWidth: 610,
+          marginLeft: "auto",
+        }}
+      >
         <div
           className="l-pnote"
           style={{
