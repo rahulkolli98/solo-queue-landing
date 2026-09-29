@@ -230,6 +230,13 @@ body {
   gap: 4px;
 }
 
+.l-wash {
+  position: absolute;
+  inset: 0;
+  background: rgba(244, 235, 217, 0.1);
+  pointer-events: none;
+}
+
 /* Paper notes (shared with app voice) */
 .l-pnote {
   position: relative;

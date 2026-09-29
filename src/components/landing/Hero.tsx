@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function Hero() {
   return (
     <section
@@ -140,25 +142,20 @@ export default function Hero() {
             aria-hidden="true"
           />
           <div className="l-shot" style={{ width: 720, maxWidth: "100%" }}>
-            <div
+            <Image
+              src="/shots/shot-today.png"
+              alt="Solo Queue Today dashboard: 38 posts queued across Threads and Instagram"
+              width={1440}
+              height={960}
+              priority
               style={{
-                borderRadius: 18,
-                background:
-                  "linear-gradient(135deg, #F0775C 0%, #FFD54A 45%, #8FB3DA 100%)",
-                aspectRatio: "3 / 2",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
+                width: "100%",
+                height: "auto",
+                display: "block",
+                filter: "blur(3px)",
               }}
-              aria-hidden="true"
-            >
-              <span
-                className="l-disp"
-                style={{ fontSize: 40, fontWeight: 800, color: "#2B1A14" }}
-              >
-                your queue, weeks ahead
-              </span>
-            </div>
+            />
+            <span className="l-wash" aria-hidden="true" />
           </div>
           <div
             style={{

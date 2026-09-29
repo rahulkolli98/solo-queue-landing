@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 const steps = [
   {
     time: "08:00",
@@ -7,6 +9,8 @@ const steps = [
     bg: "#8FB3DA",
     tilt: "-1.2deg",
     offset: 0,
+    shot: "/shots/shot-research.png",
+    shotAlt: "Solo Queue Research inbox: topics with sources and angles",
   },
   {
     time: "08:10",
@@ -16,6 +20,8 @@ const steps = [
     bg: "#F0775C",
     tilt: "0.8deg",
     offset: 50,
+    shot: "/shots/shot-studio.png",
+    shotAlt: "Solo Queue Studio: Threads thread and Instagram reel script side by side",
   },
   {
     time: "08:20",
@@ -25,6 +31,8 @@ const steps = [
     bg: "#FFD54A",
     tilt: "-0.6deg",
     offset: 100,
+    shot: "/shots/shot-queue.png",
+    shotAlt: "Solo Queue week view: scheduled Threads and Instagram slots",
   },
 ];
 
@@ -92,18 +100,24 @@ export default function How() {
                 overflow: "hidden",
                 transform: `rotate(${s.tilt})`,
                 boxShadow: "0 3px 0 rgba(43,26,20,0.16)",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
+                position: "relative",
               }}
               aria-hidden="true"
             >
-              <span
-                className="l-disp"
-                style={{ fontSize: 30, fontWeight: 800, opacity: 0.55 }}
-              >
-                {s.pill}
-              </span>
+              <Image
+                src={s.shot}
+                alt=""
+                width={1440}
+                height={960}
+                sizes="(max-width: 900px) 100vw, 480px"
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "cover",
+                  objectPosition: "top left",
+                  filter: "blur(3px)",
+                }}
+              />
             </div>
             <div className="l-row" style={{ gap: 12, alignItems: "baseline" }}>
               <span
