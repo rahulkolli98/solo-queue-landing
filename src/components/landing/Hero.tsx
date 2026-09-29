@@ -152,7 +152,7 @@ export default function Hero() {
                 width: "100%",
                 height: "auto",
                 display: "block",
-                filter: "blur(3px)",
+                filter: "blur(1px)",
               }}
             />
             <span className="l-wash" aria-hidden="true" />

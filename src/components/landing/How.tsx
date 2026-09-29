@@ -115,7 +115,7 @@ export default function How() {
                   height: "100%",
                   objectFit: "cover",
                   objectPosition: "top left",
-                  filter: "blur(3px)",
+                  filter: "blur(1px)",
                 }}
               />
             </div>
